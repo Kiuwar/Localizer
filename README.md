@@ -1,5 +1,7 @@
 # Achei Você — localização por consentimento
 
+> Ideia e princípios do projeto: [docs/IDEIA.md](docs/IDEIA.md)
+
 PWA (Cloudflare Pages) + Supabase. Cada pessoa **escolhe** compartilhar a **zona** do local (não GPS) com um grupo, por tempo limitado.
 
 ## Como funciona
