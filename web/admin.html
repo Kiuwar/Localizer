@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel do organizador</title><link rel="stylesheet" href="styles.css"></head>
+<body><main>
+<h1>🛠️ Painel do organizador</h1>
+<p id="msg" class="mut" role="status"></p>
+<section id="login" class="card">
+  <input id="email" type="email" placeholder="seu e-mail"><button id="sendLink">Receber link de acesso</button>
+</section>
+<section id="panel" class="card hidden">
+  <h2>Local</h2>
+  <select id="venue"></select>
+  <input id="vname" placeholder="Novo local (ex.: Feira 2026)"><button id="addVenue" class="sec">Criar local</button>
+  <h2>Zonas</h2>
+  <input id="zname" placeholder="Nome da zona"><input id="zbeacon" placeholder="Nome do beacon BLE (opcional)">
+  <button id="addZone" class="sec">Adicionar zona</button>
+  <div id="zones"></div>
+  <h2>Grupos</h2>
+  <input id="gname" placeholder="Nome do grupo"><button id="addGroup" class="sec">Criar grupo</button>
+  <div id="groups"></div>
+  <h2>Fluxo anônimo</h2><div id="flow" class="mut">—</div>
+  <button id="out" class="sec">Sair</button>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script src="config.js"></script><script src="admin.js"></script>
+</body></html>

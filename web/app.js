@@ -91,6 +91,28 @@ $("ble").onclick = async () => {
   } catch { $("status").textContent = "Detecção cancelada."; }
 };
 
+// QR: câmera só abre ao toque, nada é gravado nem enviado; o texto do QR vai ao RPC share_by_qr.
+$("qr").onclick = async () => {
+  if (!("BarcodeDetector" in window)) return ($("status").textContent = "Leitura de QR não suportada aqui. Escolha a zona manualmente.");
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+    const v = $("vid"); v.srcObject = stream; v.classList.remove("hidden"); await v.play();
+    const det = new BarcodeDetector({ formats: ["qr_code"] });
+    const end = Date.now() + 30000;
+    while (Date.now() < end) {
+      const codes = await det.detect(v);
+      if (codes.length) {
+        const { data, error } = await sb.rpc("share_by_qr", { gid: groupId, qr: codes[0].rawValue, minutes: +$("dur").value });
+        if (error) $("status").textContent = error.message; else { $("zone").value = data; $("status").textContent = "Zona detectada e compartilhada."; }
+        break;
+      }
+      await new Promise((r) => setTimeout(r, 300));
+    }
+  } catch { $("status").textContent = "Câmera indisponível ou negada."; }
+  finally { if (stream) stream.getTracks().forEach((t) => t.stop()); $("vid").classList.add("hidden"); }
+};
+
 $("revoke").onclick = async () => {
   await sb.rpc("revoke_consent"); localStorage.removeItem("groupId");
   hide("home", "share", "people", "privacy"); show("consent"); say("Consentimento revogado e localização removida.");
