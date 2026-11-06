@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Achei Você</title><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"></head>
+<body><main>
+<h1>📍 Achei Você</h1>
+<p class="mut">Encontre quem entrou no seu grupo — só com a permissão de cada um.</p>
+<p id="msg" class="mut" role="status"></p>
+
+<section id="consent" class="card hidden">
+  <h2>Antes de começar</h2>
+  <ul>
+    <li><b>O que usamos:</b> a zona do local em que você está (ex.: "Entrada"), nunca GPS, MAC, nem rastreio em segundo plano.</li>
+    <li><b>Quem vê:</b> apenas membros do grupo em que você entrar.</li>
+    <li><b>Por quanto tempo:</b> só enquanto você compartilhar (padrão 1h, máx. 4h). Depois apaga sozinho.</li>
+    <li><b>Seus direitos:</b> parar, revogar e apagar tudo a qualquer momento.</li>
+  </ul>
+  <p class="mut"><a href="privacidade.html">Política de privacidade</a></p>
+  <button id="accept">Concordo e quero usar</button>
+</section>
+
+<section id="home" class="card hidden">
+  <h2>Grupo</h2>
+  <input id="name" maxlength="40" placeholder="Seu nome no grupo">
+  <input id="code" maxlength="8" placeholder="Código do grupo" autocapitalize="characters">
+  <button id="join">Entrar no grupo</button>
+  <p id="groupInfo" class="mut"></p>
+</section>
+
+<section id="share" class="card hidden">
+  <h2>Minha zona</h2>
+  <select id="zone"></select>
+  <select id="dur"><option value="30">30 min</option><option value="60" selected>1 hora</option><option value="120">2 horas</option><option value="240">4 horas</option></select>
+  <button id="send">Compartilhar minha zona</button>
+  <button id="ble" class="sec">Detectar por beacon Bluetooth do local</button>
+  <button id="stop" class="sec">Parar de compartilhar</button>
+  <p class="mut" id="status"></p>
+</section>
+
+<section id="people" class="card hidden"><h2>Pessoas do grupo</h2><div id="list"></div></section>
+
+<section id="privacy" class="card hidden">
+  <h2>Privacidade</h2>
+  <button id="revoke" class="sec">Revogar consentimento</button>
+  <button id="wipe" class="bad">Apagar meus dados</button>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>

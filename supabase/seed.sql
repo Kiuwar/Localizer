@@ -1,0 +1,6 @@
+-- Exemplo (rode logado como seu usuário admin no SQL Editor, trocando <SEU_UUID>):
+-- insert into public.venues(id,name,owner) values ('11111111-1111-1111-1111-111111111111','Evento Demo','<SEU_UUID>');
+-- insert into public.zones(venue_id,name,beacon_id) values
+--  ('11111111-1111-1111-1111-111111111111','Entrada','ZONA-ENTRADA'),
+--  ('11111111-1111-1111-1111-111111111111','Praça de alimentação','ZONA-FOOD');
+-- insert into public.groups(venue_id,name,owner) values ('11111111-1111-1111-1111-111111111111','Família Silva','<SEU_UUID>');
